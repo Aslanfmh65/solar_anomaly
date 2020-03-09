@@ -332,6 +332,7 @@ class modeling:
             rf_model = RandomForestRegressor(n_estimators=10,max_depth=10, random_state=0).fit(X_train, y_train)
             rf_prediction = rf_model.predict(X_test)
             score = self.mean_absolute_percentage_error(y_test, rf_prediction)
+#             score = mean_squared_error(y_test, rf_prediction)
             cvscores.append(score)
         
         return np.mean(cvscores),rf_model
@@ -367,6 +368,7 @@ class modeling:
                 
             naive_prediction = np.array([np.mean(i) for i in X_test])
             score = self.mean_absolute_percentage_error(y_test, naive_prediction)
+#             score = mean_squared_error(y_test, naive_prediction)
             cvscores.append(score)
         
         return np.mean(cvscores)
